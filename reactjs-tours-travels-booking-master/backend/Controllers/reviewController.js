@@ -12,7 +12,7 @@ const Review = require("../models/Review.js");
       // after creating a new review now update the reviews array of the tour 
       await Tour.findByIdAndUpdate(tourId, {
          $push: {reviews: savedReview._id}
-      })
+      }).exec();
 
       res.status(200).json({success:true, message:"Review submitted", data:savedReview})
    } catch (error) {
